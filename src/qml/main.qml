@@ -19,6 +19,44 @@ ApplicationWindow {
 
     header: ToolBar {
         id: navigation
+
+        ToolButton {
+            id: backNavBtn
+
+            anchors {
+                left: parent.left
+                top: parent.top
+                bottom: parent.bottom
+            }
+
+            hoverEnabled: false
+
+            icon.source: "qrc:/icons/arrow-left.svg"
+            icon.color: Material.foreground
+
+            visible: appStackView.depth > 1
+            onClicked: appStackView.pop()
+        }
+
+        Text {
+            id: title
+
+            anchors {
+                left: backNavBtn.right
+                right: parent.right
+                top: parent.top
+                bottom: parent.bottom
+
+                rightMargin: backNavBtn.width + 7
+                leftMargin: 7
+            }
+
+            text: appStackView.currentItem.navigationTitle
+
+            color: Material.foreground
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignHCenter
+        }
     }
 
     StackView {
@@ -31,6 +69,20 @@ ApplicationWindow {
             bottom: parent.bottom
         }
 
-        initialItem: C.ContactList {}
+        initialItem: contactList
+    }
+
+    Component {
+        id: contactList
+        C.ContactList {
+            onContactSelected: appStackView.push(contactDetails, {
+                contactData: contactData
+            })
+        }
+    }
+
+    Component {
+        id: contactDetails
+        C.ContactDetails {}
     }
 }

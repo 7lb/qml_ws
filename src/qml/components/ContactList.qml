@@ -5,6 +5,10 @@ import QtQuick.Controls.Material 2.12
 Item {
     id: root
 
+    readonly property string navigationTitle: qsTr("Contacts")
+
+    signal contactSelected(var contactData)
+
     TextField {
         id: searchField
 
@@ -35,8 +39,11 @@ Item {
 
         delegate: ItemDelegate {
             width: contactsView.width
+
             text: model.contactName
             hoverEnabled: false
+
+            onClicked: root.contactSelected(model)
         }
 
         model: contactsModel
