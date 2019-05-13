@@ -1,5 +1,6 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
+import QtQuick.Controls.Material 2.12
 
 Item {
     id: root
@@ -30,15 +31,35 @@ Item {
             margins: 15
         }
 
-        ScrollBar.vertical: ScrollBar {}
+        ScrollBar.vertical: ScrollBar { id: scrollBar }
 
         delegate: ItemDelegate {
             width: contactsView.width
             text: model.contactName
+            hoverEnabled: false
         }
 
         model: contactsModel
         clip: true
+    }
+
+    RoundButton {
+        id: addContactBtn
+
+        anchors {
+            right: root.right
+            bottom: root.bottom
+
+            margins: scrollBar.width + 15
+        }
+
+        width: 64
+        height: 64
+
+        icon.source: "qrc:/icons/plus.svg"
+        icon.color: Material.foreground
+        icon.width: 24
+        icon.height: 24
     }
 
     ListModel {
