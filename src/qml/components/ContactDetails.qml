@@ -34,6 +34,8 @@ Item {
 
             placeholderText: qsTr("Contact name")
             text: root.contactData.contactName
+
+            onEditingFinished: appContactModel.setContactName(contactData.contactUuid, text)
         }
 
         TextField {
@@ -43,6 +45,8 @@ Item {
 
             placeholderText: qsTr("Contact phone number")
             text: root.contactData.contactPhoneNo
+
+            onEditingFinished: appContactModel.setContactPhoneNo(contactData.contactUuid, text)
         }
 
         TextField {
@@ -52,6 +56,8 @@ Item {
 
             placeholderText: qsTr("Contact email")
             text: root.contactData.contactEmail
+
+            onEditingFinished: appContactModel.setContactEmail(contactData.contactUuid, text)
         }
     }
 

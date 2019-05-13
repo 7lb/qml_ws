@@ -5,6 +5,7 @@
     <qresource prefix="/components">
         <file alias="ContactList.qml">src/qml/components/ContactList.qml</file>
         <file alias="ContactDetails.qml">src/qml/components/ContactDetails.qml</file>
+        <file alias="ContactAdd.qml">src/qml/components/ContactAdd.qml</file>
     </qresource>
     <qresource prefix="/icons">
         <file alias="arrow-left.svg">assets/icons/arrow-left.svg</file>

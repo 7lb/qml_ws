@@ -78,6 +78,8 @@ ApplicationWindow {
             onContactSelected: appStackView.push(contactDetails, {
                 contactData: contactData
             })
+
+            onContactAddBtnClicked: appStackView.push(contactAdd)
         }
     }
 
@@ -85,6 +87,13 @@ ApplicationWindow {
         id: contactDetails
         C.ContactDetails {
             onContactDeleted: appStackView.pop()
+        }
+    }
+
+    Component {
+        id: contactAdd
+        C.ContactAdd {
+            onContactAdded: appStackView.pop()
         }
     }
 }

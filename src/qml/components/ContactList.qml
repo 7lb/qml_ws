@@ -10,6 +10,7 @@ Item {
     readonly property string navigationTitle: qsTr("Contacts")
 
     signal contactSelected(Contact contactData)
+    signal contactAddBtnClicked()
 
     TextField {
         id: searchField
@@ -76,5 +77,7 @@ Item {
         icon.color: Material.foreground
         icon.width: 24
         icon.height: 24
+
+        onClicked: root.contactAddBtnClicked()
     }
 }
