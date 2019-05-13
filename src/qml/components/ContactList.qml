@@ -2,12 +2,14 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Controls.Material 2.12
 
+import appTypes 1.0
+
 Item {
     id: root
 
     readonly property string navigationTitle: qsTr("Contacts")
 
-    signal contactSelected(var contactData)
+    signal contactSelected(Contact contactData)
 
     TextField {
         id: searchField
@@ -38,15 +40,22 @@ Item {
         ScrollBar.vertical: ScrollBar { id: scrollBar }
 
         delegate: ItemDelegate {
+            readonly property Contact contact: Contact {
+                contactUuid: model.contactUuid
+                contactName: model.contactName
+                contactPhoneNo: model.contactPhoneNo
+                contactEmail: model.contactEmail
+            }
+
             width: contactsView.width
 
-            text: model.contactName
+            text: contact.contactName
             hoverEnabled: false
 
-            onClicked: root.contactSelected(model)
+            onClicked: root.contactSelected(contact)
         }
 
-        model: contactsModel
+        model: appContactModel
         clip: true
     }
 
@@ -67,33 +76,5 @@ Item {
         icon.color: Material.foreground
         icon.width: 24
         icon.height: 24
-    }
-
-    ListModel {
-        id: contactsModel
-
-        ListElement {
-            contactName: "John Doe"
-            contactPhoneNo: "3330004567"
-            contactEmail: "john.doe@somemail.com"
-        }
-
-        ListElement {
-            contactName: "Jane Doe"
-            contactPhoneNo: "3330004568"
-            contactEmail: "jane.doe@somemail.com"
-        }
-
-        ListElement {
-            contactName: "Alice"
-            contactPhoneNo: "3330004569"
-            contactEmail: "alice@wonderland.org"
-        }
-
-        ListElement {
-            contactName: "Bob"
-            contactPhoneNo: "3330004570"
-            contactEmail: "bob@ross.com"
-        }
     }
 }

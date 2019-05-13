@@ -3,12 +3,16 @@ import QtQuick.Controls 2.12
 import QtQuick.Controls.Material 2.12
 import QtQuick.Layouts  1.12
 
+import appTypes 1.0
+
 Item {
     id: root
 
+    signal contactDeleted()
+
     readonly property string navigationTitle: contactData.contactName
 
-    property var contactData
+    property Contact contactData
 
     ColumnLayout {
         id: contactInfo
@@ -76,7 +80,10 @@ Item {
             icon.source: "qrc:/icons/trash-can.svg"
             icon.color: Material.color(Material.Red)
 
-            onClicked: console.log("deleting contact")
+            onClicked: {
+                appContactModel.removeContact(root.contactData.contactUuid)
+                root.contactDeleted()
+            }
         }
 
         ToolButton {
