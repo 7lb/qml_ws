@@ -7,7 +7,8 @@ QT += \
     xml
 
 CONFIG += \
-    c++14
+    c++14 \
+    qtquickcompiler
 
 SOURCES += \
         src/main.cpp

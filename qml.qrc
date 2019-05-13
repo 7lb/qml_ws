@@ -5,4 +5,12 @@
     <qresource prefix="/components">
         <file alias="ContactList.qml">src/qml/components/ContactList.qml</file>
     </qresource>
+    <qresource prefix="/icons">
+        <file alias="arrow-left.svg">assets/icons/arrow-left.svg</file>
+        <file alias="copy-to-clipboard.svg">assets/icons/copy-to-clipboard.svg</file>
+        <file alias="message.svg">assets/icons/message.svg</file>
+        <file alias="phone.svg">assets/icons/phone.svg</file>
+        <file alias="plus.svg">assets/icons/plus.svg</file>
+        <file alias="trash-can.svg">assets/icons/trash-can.svg</file>
+    </qresource>
 </RCC>
