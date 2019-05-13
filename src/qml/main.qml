@@ -83,6 +83,8 @@ ApplicationWindow {
 
     Component {
         id: contactDetails
-        C.ContactDetails {}
+        C.ContactDetails {
+            onContactDeleted: appStackView.pop()
+        }
     }
 }
