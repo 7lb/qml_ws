@@ -10,8 +10,16 @@ CONFIG += \
     c++14 \
     qtquickcompiler
 
+INCLUDEPATH += src
+
+HEADERS += \
+    src/contact.h \
+    src/models/contact_model.h
+
 SOURCES += \
-        src/main.cpp
+    src/main.cpp \
+    src/contact.cpp \
+    src/models/contact_model.cpp
 
 RESOURCES += qml.qrc
 
